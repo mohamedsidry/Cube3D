@@ -1,40 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   typedef.h                                          :+:      :+:    :+:   */
+/*   const.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:02 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 19:45:47 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/15 20:39:41 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPEDEF_H
-# define TYPEDEF_H
+#ifndef CONST_H
+#define CONST_H
 
-typedef struct s_error
-{
-    int stat;
-    char *message;
-} t_error;
-
-typedef struct s_scene
-{
-    int fd;
-    char *path;
-    t_list *map;
-} t_scene;
-
-typedef struct s_container
-{
-    int argc;
-    char **argv;
-    t_scene scene;
-    t_error error;
-} t_game;
-
-typedef bool(*validCallback)(t_game *game);
-
-
+# define ARGS 2
+# define EXTENSION ".cube"
+# define MAPLINE "\033[;36m$MAPLINE\033[0m"
 #endif

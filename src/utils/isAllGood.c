@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   typedef.h                                          :+:      :+:    :+:   */
+/*   isAllGood.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:02 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 19:45:47 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/15 18:17:13 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/15 20:18:48 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPEDEF_H
-# define TYPEDEF_H
+#include "../../include/main.h"
 
-typedef struct s_error
+void isAllGood(t_game **ref)
 {
-    int stat;
-    char *message;
-} t_error;
-
-typedef struct s_scene
+    int exitCode;
+    if (!ref || !*ref)
+        exit(EXIT_FAILURE);
+    exitCode = (*ref)->error.stat;
+    if (exitCode)
+    {
+        what(&(*ref)->error);
+        game_destroy(ref);
+        exit(exitCode);
+    }
+}
+bool isAllOk(t_game *ref)
 {
-    int fd;
-    char *path;
-    t_list *map;
-} t_scene;
-
-typedef struct s_container
-{
-    int argc;
-    char **argv;
-    t_scene scene;
-    t_error error;
-} t_game;
-
-typedef bool(*validCallback)(t_game *game);
-
-
-#endif
+    if (!ref)
+        return(false);
+    return (ref->error.stat == 0);
+}

@@ -1,4 +1,4 @@
-NAME = cube3d.bin
+NAME = cube3D
 
 
 
@@ -14,8 +14,19 @@ DEPENDENCY = $(DEPENDENCY_PATH)/libft.a
 DEPENDENCY_NAME = ft
 DEPENDENCY_HEADER = $(DEPENDENCY_PATH)
 
+FRAMEWORKS = -framework OpenGL -framework AppKit
+MLXLIB = -lmlx $(FRAMEWORKS)
 
-OBJS = $(MAIN:.c=.o)
+SRCS =	src/utils/error.c \
+		src/utils/game_init.c \
+		src/utils/game_destroy.c \
+		src/utils/validatorInput.c \
+		src/utils/isAllGood.c \
+		src/utils/concat3.c \
+		src/utils/map.c \
+		src/utils/find_replace.c
+
+OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o)
 
 
 %.o : %.c $(INCLUDE)
@@ -28,8 +39,8 @@ all : $(NAME)
 
 $(NAME): $(DEPENDENCY)  $(OBJS) 
 	@echo $(LINK) $^
-	@$(CC) $(CFLAGS) -L$(DEPENDENCY_PATH) -l$(DEPENDENCY_NAME) -I$(DEPENDENCY_HEADER) $^ -o $@
-
+	@$(CC) $(CFLAGS) -L$(DEPENDENCY_PATH) -l$(DEPENDENCY_NAME) -I$(DEPENDENCY_HEADER) $(MLXLIB) $^ -o $@
+	@echo $(BULILD_MESSAGE)
 
 $(DEPENDENCY):
 	@echo $(BUILD) $@
@@ -57,7 +68,9 @@ fclean : clean
 	@$(RM) $(RMFLAGS) $(NAME)
 
 
-PARAM = # // TODO: Add program params for testing !
+# // TODO: Add program params for testing !
+
+PARAM = txt.cube
 
 run : fclean $(NAME)
 	@echo $(RUNNING) $(NAME)
@@ -68,12 +81,13 @@ run : fclean $(NAME)
 
 # MESSAGES 
 
-DEPENDENCY_MESSAGE = "\033[1;32mLIBFT was built successfuly !\033[0m"
+DEPENDENCY_MESSAGE = "\033[1;32m--------------- ✨libft was built successfuly✨ ---------------\033[0m"
+BULILD_MESSAGE = "\033[1;32m--------------- ✨cube3D was built successfuly✨ ---------------\033[0m"
 COLMPILE = "\033[1;33m🛠️ Compile :\033[0m"
 LINK = "\033[1;34m🔗 Link : \033[0m"
 REMOVE = "\033[1;90m🗑️  Remove :\033[0m"
 BUILD = "\033[1;35m🛠️ Building :\033[0m"
-RUNNING = "\033[1;35m⚡ Running :\033[0m"
+RUNNING = "\033[1;35m🚀 Running :\033[0m"
 
 
 
@@ -85,7 +99,7 @@ GREEN := $(ESC)[1;32m
 RESET := $(ESC)[0m
 
 ERRORNORM := $(RED)💀 Error:$(RESET)
-OKNORM := $(GREEN)✅ OK:$(RESET)
+OKNORM := $(GREEN)✅ Valid: $(RESET)
 GOODNORM := $(GREEN)--------------- ✅ GOOD NORMS ✅ --------------- $(RESET)
 BADNORM := $(RED)--------------- 💀 BAD NORMS 💀 ---------------$(RESET)
 

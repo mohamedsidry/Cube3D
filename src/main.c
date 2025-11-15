@@ -6,15 +6,25 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:20:36 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/15 20:07:39 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/main.h"
 
+static void leakCheck(void);
 int	main(int argc, char *argv[])
 {
-	(void)argc;
-	printf("%s : Hello world !\n", argv[0]);
+	t_game *game;
+
+	game = NULL;
+	game_init(&game, argc, argv);
+	game_destroy(&game);
+	atexit(leakCheck);
 	return (0);
+}
+
+static void leakCheck(void)
+{
+	system("leaks -q cube3D");
 }

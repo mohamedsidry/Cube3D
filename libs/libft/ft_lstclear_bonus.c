@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:04:44 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/15 13:18:20 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/15 20:31:59 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	while (*lst)
 	{
 		tmp = (*lst)->next;
-		del(*lst);
+		del((*lst)->content);
+		free(*lst);
 		*lst = tmp;
 	}
 }
