@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:41:23 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/17 16:55:25 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 10:48:08 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 static bool valid_rgba(char *color);
-//static bool valid_hexa(char *color);
+static bool valid_hexa(char *color);
 
 void rgba_handler(t_error *error, t_texture *texture, char *rgbacolor)
 {
@@ -56,32 +56,40 @@ static bool valid_rgba(char *color)
 
 
 
-// void hexa_handler(t_error *error, t_texture *texture, char *rgbacolor)
-// {
-//     char *color;
+void hexa_handler(t_error *error, t_texture *texture, char *hexacolor)
+{
+    char *color;
+    size_t len;
 
-//     if (*rgbacolor == '(' && rgbacolor[ft_strlen(rgbacolor) - 1] == ')')
-//         color = ft_substr(rgbacolor, 1, ft_strlen(&rgbacolor[1]) - 1);
-//     else
-//         color = ft_strdup(rgbacolor);
-//     if (!valid_rgba(color))
-//     {
-//         setError(error, ERROR_RGBA);   
-//         setStat(error, EXIT_FAILURE);
-//         nullstr(&color);
-//     }
-//     texture->type = SOLID;
-//     texture->rgba = rgbatoint(color);
-//     nullstr(&color);
-// }
+    while (is_space(*hexacolor))
+        hexacolor++;
+    len = ft_strlen(hexacolor);
+    if (!valid_hexa(hexacolor))
+    {
+        setError(error, ERROR_FORMAT);   
+        setStat(error, EXIT_FAILURE);
+        nullstr(&color);
+        return ;
+    }
+    if (len == 6)
+        color = concat3(capitalize(hexacolor), "FF", NULL, 1);
+    else
+        color = ft_strdup(hexacolor);
+    texture->type = SOLID;
+    texture->rgba = hexatoint(color);
+    nullstr(&color);
+}
 
-// static bool valid_hexa(char *color)
-// {
-//     if (!color)
-//         return (false);
-//     if (match_count(color, ',') < 2)
-//         return (false);
-//     if (!contain_only(color, DECISET))
-//         return (false);
-//     return (true);
-// }
+static bool valid_hexa(char *color)
+{
+    size_t len;
+
+    if (!color)
+        return (false);
+    len = ft_strlen(color);
+    if (len != 6 && len != 8)
+        return (false);
+    if (!contain_only(color, HEXASET))
+        return (false);
+    return (true);
+}

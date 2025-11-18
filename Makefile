@@ -43,7 +43,8 @@ HELPERS =	src/utils/help/array2d.c \
 			src/utils/help/converter.c \
 			src/utils/help/find_replace.c \
 			src/utils/help/is_space.c \
-			src/utils/help/match_count.c
+			src/utils/help/match_count.c \
+			src/utils/help/capitalize.c
 
 TEST =	src/test/test.c 
 

@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/17 15:33:52 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 10:30:27 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ void    nullarr2d(void ***ptr, size_t len); // free and set to null a 2d array o
 t_uint  rgbatoint(char *rgba); // converte rgba string to t_uint example: 255,255,255,255 to ~0
 t_uint  match_count(char *str, unsigned char c); // count duplicate of char in string !
 bool    contain_only(char *str, char *set); // check if string composed only of set;
+char    *capitalize(const char *str); // to upper string !
+t_uint  hexatoint(char *hexacolor);
 
 #endif

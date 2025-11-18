@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:44:01 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/17 16:36:39 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 11:04:43 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void texture_format_handler(t_error * error, t_texture *target, char *line)
 {
     char    *format;
     char    *msg;
-    callformat callbacks[3] = {rgba_handler, rgba_handler, rgba_handler};
+    callformat callbacks[3] = {hexa_handler, rgba_handler, rgba_handler};
     char *formats[3]= {HEXA, RGBA, PATH};
     size_t idx;
     
@@ -33,13 +33,12 @@ void texture_format_handler(t_error * error, t_texture *target, char *line)
     }
     while (++idx < 3)
     {
-        if (!ft_strncmp(format, formats[idx], ft_strlen(formats[idx] - 1)))
+        if (!ft_strncmp(format, formats[idx], 4))
         {
             callbacks[idx](error, target, format + ft_strlen(formats[idx]));
             break;
         }
     }
-
     free(format);
 }
 
@@ -57,11 +56,11 @@ static char *extract_format(char *line)
         return (NULL);
     fd = open(line, O_RDONLY);
     if (fd > 0 && !close(fd))
-        return (concat3("path", line, " ", 2));
+        return (concat3("PATH", line, " ", 2));
     if (*line == '#')
-        return (concat3("hexa", line + 1, " ", 0));
+        return (concat3("HEXA", line + 1, " ", 0));
     if (!ft_strncmp(line, "rgba", 4))
-        return (concat3("rgba", line + 4, " ", 0));
-    return (find_replace("rgba ($RGBA,255)", "$RGBA", line, 0));
+        return (concat3("RGBA", line + 4, " ", 0));
+    return (find_replace("RGBA ($RGBA,255)", "$RGBA", line, 0));
 }
 

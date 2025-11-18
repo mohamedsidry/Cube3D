@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:39:38 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/17 12:10:27 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 10:59:24 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ void echo(char *message)
 {
     message = find_replace(ECHO_MSG, "$message", message, 0);
     ft_putstr_fd(message, 1);
+    free(message);
+}
+void debug(char *lvl, char *message)
+{
+    message = find_replace(DEBUG_MSG, "$message", lvl, 0);
+    printf("%s\n", message);
+    ft_putstr_fd(message, 1);
+    free(message);
     free(message);
 }
 
