@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 14:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/17 15:09:37 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 14:33:15 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void init_default(t_game *ref, int argc, char *argv[])
     ref->argv = argv;
     ref->scene.path = argv[1];
     ref->scene.fd = -1;
-    ref->scene.rawmap = NULL;
 }
 
 

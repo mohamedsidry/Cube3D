@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:37:40 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 10:58:55 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 14:30:46 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void echo(char *message);
 void debug(char *lvl, char *message);
 void print_raw_map(t_list *map);
 void texture_info(t_texture *texture);
-void rgba_handler (t_error *error, t_texture *texture, char *rgbacolor);
-void hexa_handler(t_error *error, t_texture *texture, char *hexacolor);
-
 
 
 

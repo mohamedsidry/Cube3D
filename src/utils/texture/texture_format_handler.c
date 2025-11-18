@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:44:01 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 11:04:43 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 12:51:39 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void texture_format_handler(t_error * error, t_texture *target, char *line)
 {
     char    *format;
     char    *msg;
-    callformat callbacks[3] = {hexa_handler, rgba_handler, rgba_handler};
+    callformat callbacks[3] = {hexa_handler, rgba_handler, path_handler};
     char *formats[3]= {HEXA, RGBA, PATH};
     size_t idx;
-    
     idx = -1;
     format = extract_format(line + isMapConfig(line));
     if (!format)
@@ -56,7 +55,7 @@ static char *extract_format(char *line)
         return (NULL);
     fd = open(line, O_RDONLY);
     if (fd > 0 && !close(fd))
-        return (concat3("PATH", line, " ", 2));
+        return (concat3("PATH", line, " ", 0));
     if (*line == '#')
         return (concat3("HEXA", line + 1, " ", 0));
     if (!ft_strncmp(line, "rgba", 4))

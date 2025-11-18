@@ -3,7 +3,7 @@ NAME = cube3D
 
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -pedantic
+CFLAGS = -Wall -Werror -Wextra -pedantic -fsanitize=address -g
 CSTAGE = -c
 
 MAIN = src/main.c
@@ -33,7 +33,8 @@ SRCS =	src/utils/game_init.c \
 		src/utils/texture/handler_south.c \
 		src/utils/texture/handler_west.c \
 		src/utils/texture/texture_format_handler.c \
-		src/utils/texture/handler_color.c \
+		src/utils/texture/handler_texture_color.c \
+		src/utils/texture/handler_texture_path.c \
 		src/utils/allGood.c
 		
 

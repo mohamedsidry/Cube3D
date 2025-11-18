@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 10:30:27 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 14:31:16 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ void	set_west_texture(t_error *err, t_gametxt *textures, char *line);
 void	set_sky_texture(t_error *err, t_gametxt *textures, char *line);
 void	set_floor_texture(t_error *err, t_gametxt *textures, char *line);
 void    texture_format_handler(t_error * error, t_texture *target, char *line);
+void    rgba_handler (t_error *error, t_texture *texture, char *rgbacolor);
+void    hexa_handler(t_error *error, t_texture *texture, char *hexacolor);
+void    path_handler(t_error *error, t_texture *texture, char *path);
 
 
 // HELPER

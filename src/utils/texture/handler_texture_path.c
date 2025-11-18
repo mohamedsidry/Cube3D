@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handler_texture_path.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/15 13:14:17 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 13:09:03 by msidry           ###   ########.fr       */
+/*   Created: 2025/11/18 12:37:43 by msidry            #+#    #+#             */
+/*   Updated: 2025/11/18 13:00:15 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/main.h"
+#include "../../../include/main.h"
 
-//static void leakCheck(void);
-int	main(int argc, char *argv[])
+void path_handler(t_error *error, t_texture *texture, char *path)
 {
-	t_game *game;
-
-	game = NULL;
-	game_init(&game, argc, argv);
-	game_destroy(&game);
-	//atexit(leakCheck);
-	return (0);
+    (void)error;
+    texture->type = IMAGE;
+    nullstr(&texture->path);
+    texture->path = ft_strtrim(path, "\t \r\b\n\v");
+    texture->rgba = ~0;
 }
-
-// static void leakCheck(void)
-// {
-// 	system("leaks -q cube3D");
-// }

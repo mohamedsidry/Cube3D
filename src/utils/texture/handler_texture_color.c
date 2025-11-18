@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handler_color.c                                    :+:      :+:    :+:   */
+/*   handler_texture_color.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:41:23 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 10:48:08 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 13:15:05 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void hexa_handler(t_error *error, t_texture *texture, char *hexacolor)
     {
         setError(error, ERROR_FORMAT);   
         setStat(error, EXIT_FAILURE);
-        nullstr(&color);
         return ;
     }
     if (len == 6)

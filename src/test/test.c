@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:39:38 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 10:59:24 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 12:59:08 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void debug(char *lvl, char *message)
 void texture_info(t_texture *texture)
 {
     printf("TYPE  : %s\n", texture->type == SOLID ? "COLOR" : "IMAGE");
-    printf("PATH  : %s\n", texture->path);
+    printf("PATH  :%s\n", texture->path);
     printf("COLOR : %u\n", texture->rgba);
     printf("ARGB  : (%d,%d,%d,%d) \n", (texture->rgba >> 24) & 0xFF, (texture->rgba >> 16) & 0xFF, texture->rgba >> 8 & 0xFF, texture->rgba & 0xFF);
 }

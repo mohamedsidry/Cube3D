@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 14:01:47 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/18 11:29:08 by msidry           ###   ########.fr       */
+/*   Updated: 2025/11/18 13:35:43 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_uint rgbatoint(char *rgbacolor)
     {
         rgba[idx] = ft_atoi(values[idx]);
         if (rgba[idx] > 255 || rgba[idx] < 0)
-            rgba[idx] = rgba[idx] & 0xFF;
+            rgba[idx] = (t_uint)rgba[idx] & 0xFF;
     }
     ptr = &values;
     nullarr2d((void ***)ptr, length);
@@ -50,7 +50,6 @@ t_uint hexatoint(char *hexacolor)
         hexacolor++;
     if (*hexacolor == '#')
         hexacolor++;
-    echo(hexacolor);
     while (*hexacolor)
     {
         value <<= 4;
