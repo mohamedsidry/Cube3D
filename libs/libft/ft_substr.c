@@ -15,10 +15,8 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
-	size_t	bytes;
 	size_t	srclen;
 
-	bytes = 0;
 	if (!s)
 		return (0);
 	srclen = ft_strlen(s);

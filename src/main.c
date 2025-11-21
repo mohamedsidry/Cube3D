@@ -12,7 +12,7 @@
 
 #include "../include/main.h"
 
-static void leakCheck(void);
+//static void leakCheck(void);
 int	main(int argc, char *argv[])
 {
 	t_game *game;
@@ -20,11 +20,11 @@ int	main(int argc, char *argv[])
 	game = NULL;
 	game_init(&game, argc, argv);
 	game_destroy(&game);
-	atexit(leakCheck);
+	//atexit(leakCheck);
 	return (0);
 }
 
-static void leakCheck(void)
-{
- 	system("leaks -q cube3D");
-}
+// static void leakCheck(void)
+// {
+//  	system("leaks -q cube3D");
+// }

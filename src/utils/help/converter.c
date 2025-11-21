@@ -30,7 +30,7 @@ t_uint rgbatoint(char *rgbacolor)
     while (++idx < 4)
     {
         rgba[idx] = ft_atoi(values[idx]);
-        if (rgba[idx] > 255 || rgba[idx] < 0)
+        if (rgba[idx] > 255)
             rgba[idx] = (t_uint)rgba[idx] & 0xFF;
     }
     ptr = &values;

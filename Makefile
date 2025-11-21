@@ -5,7 +5,7 @@ NAME = cube3D
 CC = cc
 CFLAGS = -Wall -Werror -Wextra 
 CSTAGE = -c
-//CFLAGS += -pedantic -fsanitize=address -g
+CFLAGS += -pedantic -fsanitize=address -g
 
 MAIN = src/main.c
 INCLUDE = include/main.h
@@ -70,7 +70,7 @@ all : $(NAME)
 
 $(NAME): $(DEPENDENCY)  $(OBJS) 
 	@echo $(LINK) $^
-	@$(CC) $(CFLAGS) -L$(DEPENDENCY_PATH) -l$(DEPENDENCY_NAME) -I$(DEPENDENCY_HEADER) $(MLXLIB) $^ -o $@
+	@$(CC) $(CFLAGS) $^ -L$(DEPENDENCY_PATH) -l$(DEPENDENCY_NAME) -I$(DEPENDENCY_HEADER) $(MLXLIB)  -o $@
 	@echo $(BULILD_MESSAGE)
 
 $(DEPENDENCY):

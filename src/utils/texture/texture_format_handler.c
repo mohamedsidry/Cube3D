@@ -43,12 +43,10 @@ void texture_format_handler(t_error * error, t_texture *target, char *line)
 
 static char *extract_format(char *line)
 {
-    size_t idx;
     int fd;
 
     if (!is_space(*line))
         return (NULL);
-    idx = 0;
     while (*line && is_space(*line))
         line++;
     if (!*line)

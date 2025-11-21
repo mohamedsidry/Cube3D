@@ -53,7 +53,6 @@ void debug(char *lvl, char *message)
     printf("%s\n", message);
     ft_putstr_fd(message, 1);
     free(message);
-    free(message);
 }
 
 void texture_info(t_texture *texture)
