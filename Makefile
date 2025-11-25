@@ -38,6 +38,7 @@ SRCS =	src/utils/game_init.c \
 		src/utils/texture/handler_texture_path.c \
 		src/utils/map/map_handler.c \
 		src/utils/map/map_validator.c \
+		src/utils/map/map_transform.c \
 		src/utils/allGood.c
 		
 
@@ -55,7 +56,8 @@ HELPERS =	src/utils/help/array2d.c \
 			src/utils/help/normalize.c
 
 
-TEST =	src/test/test.c 
+TEST =	src/test/test.c \
+		src/test/queue/q_crud.c src/test/queue/q_find.c  src/test/queue/q_last.c  src/test/queue/q_pop.c src/test/queue/q_print.c src/test/queue/q_push.c 
 
 OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o) $(HELPERS:.c=.o) $(TEST:.c=.o)
 

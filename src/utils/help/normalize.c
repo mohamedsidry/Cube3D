@@ -19,7 +19,7 @@ char *normalize(char *str, size_t newsize, unsigned char toapp)
     size_t len;
 
     len = ft_strlen(str);
-    if (len + 1 == newsize)
+    if (len == newsize)
         return (str);
     newstr = ft_realloc(str, len , newsize + 1);
     if (!newstr)

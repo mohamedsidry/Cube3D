@@ -13,8 +13,8 @@
 #include "../../../include/main.h"
 
 static void init_map(t_game *ref);
-static void normaize_width(t_map *map);
 static t_list *extract_map(t_list *rawmap);
+static void set_height_width(t_map *map);
 
 void map_handler(t_game *ref)
 {
@@ -38,9 +38,12 @@ static void init_map(t_game *ref)
     {
         setError(&ref->error, EMPTY_MAP);
         setStat(&ref->error, EXIT_FAILURE);
+        nullarr2d((void ***)&raw2d, str2dlen(raw2d));
+        return ;
+
     }
     nullarr2d((void ***)&raw2d, str2dlen(raw2d));
-    normaize_width(&ref->map);
+    set_height_width(&ref->map);
 }
 
 static t_list *extract_map(t_list *rawmap)
@@ -54,7 +57,7 @@ static t_list *extract_map(t_list *rawmap)
     return (NULL);
 }
 
-static void normaize_width(t_map *map)
+static void set_height_width(t_map *map)
 {
     size_t idx;
     size_t len;
@@ -62,16 +65,10 @@ static void normaize_width(t_map *map)
     idx = 0;
     while (map->map2d[idx])
     {
-        map->map2d[idx] = find_replace(map->map2d[idx], "\t", "    ", 1);
         len = ft_strlen(map->map2d[idx]);
         if (len > map->width)
             map->width = len;
         idx++;
-    }
-    idx = 0;
-    while (map->map2d[idx])
-    {
-        map->map2d[idx] = normalize(map->map2d[idx], map->width + 1, ' ');
-        idx++;
+        map->hight++;
     }
 }

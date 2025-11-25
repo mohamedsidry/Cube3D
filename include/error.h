@@ -17,5 +17,5 @@
 # define BAD_E_LINE "Empty Line within the map"
 # define BAD_C_LINE "Map line should contain only {1, 0, E, W, S, N, ' '}"
 # define BAD_D_LINE "Player can face one and only one direction {S, N, E, W}"
-# define BAD_S_LINE "Map has to be surrounded with  wall, a.k.a {1}"
+# define BAD_S_LINE "Map has to be surrounded with  walls, a.k.a {1}"
 #endif

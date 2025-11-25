@@ -46,6 +46,7 @@ bool		isAllOk(t_game *ref);
 // MAP && scene
 void		map_handler(t_game *ref);
 void        map_validator(t_game *ref);
+void        normaize_width(t_map *map, unsigned char toapp);
 
 
 //  CONFIG 

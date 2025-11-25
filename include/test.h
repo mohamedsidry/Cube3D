@@ -27,4 +27,21 @@ void print_map_grid(t_grid grid);
 void config_info(t_game *ref);
 
 
+typedef struct s_queue
+{
+    unsigned char content;
+    struct s_queue *next;
+    int x;
+    int y;
+} t_queue;
+
+t_queue *q_create(unsigned char c, int x, int y);
+void    q_delete(t_queue **node);
+t_queue *q_find(t_queue *queue, int x, int y);
+t_queue *q_last(t_queue *queue);
+int     q_pop(t_queue **queue, t_queue *out);
+void    q_push(t_queue **queue, t_queue *newq);
+void    q_printQueue(t_queue *queue);
+void    q_pushQueue(void);
+void    q_popQueue(t_queue **queue);
 #endif
