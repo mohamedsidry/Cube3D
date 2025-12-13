@@ -39,7 +39,8 @@ SRCS =	src/utils/game_init.c \
 		src/utils/map/map_handler.c \
 		src/utils/map/map_validator.c \
 		src/utils/map/map_transform.c \
-		src/utils/allGood.c
+		src/utils/allGood.c \
+		
 		
 
 HELPERS =	src/utils/help/array2d.c \
@@ -53,7 +54,8 @@ HELPERS =	src/utils/help/array2d.c \
 			src/utils/help/serialize.c \
 			src/utils/help/transform.c \
 			src/utils/help/ft_realloc.c \
-			src/utils/help/normalize.c
+			src/utils/help/normalize.c \
+			src/utils/help/boundaryfloodfill.c
 
 
 TEST =	src/test/test.c \

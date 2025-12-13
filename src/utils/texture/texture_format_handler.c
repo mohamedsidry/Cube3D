@@ -6,23 +6,24 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:44:01 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 11:02:25 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/13 11:10:11 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/main.h"
 
 static char *extract_format(char *line);
+static callformat mapper(char *format);
+
 void texture_format_handler(t_error * error, t_texture *target, char *line)
 {
     char    *format;
     char    *msg;
-    callformat callbacks[3] = {hexa_handler, rgba_handler, path_handler};
-    char *formats[3]= {HEXA, RGBA, PATH};
-    size_t idx;
-    idx = -1;
+    callformat callback;
+
     format = extract_format(line + is_map_config(line));
-    if (!format)
+    callback = mapper(format);
+    if (!format || !callback)
     {
         msg = find_replace(ERROR_GENERAL, "$MSG", ERROR_FORMAT, 0) ;
         setError(error, msg);
@@ -30,14 +31,7 @@ void texture_format_handler(t_error * error, t_texture *target, char *line)
         free(msg);
         return ;
     }
-    while (++idx < 3)
-    {
-        if (!ft_strncmp(format, formats[idx], 4))
-        {
-            callbacks[idx](error, target, format + ft_strlen(formats[idx]));
-            break;
-        }
-    }
+    callback(error, target, format + 4);
     free(format);
 }
 
@@ -61,3 +55,23 @@ static char *extract_format(char *line)
     return (find_replace("RGBA ($RGBA,255)", "$RGBA", line, 0));
 }
 
+static callformat mapper(char *format)
+{
+    static callformat callbacks[3];
+    static char *formats[3];
+    callbacks[0] = hexa_handler;
+    callbacks[1] = rgba_handler;
+    callbacks[2] = path_handler;
+    formats[0] = HEXA;
+    formats[1] = RGBA;
+    formats[2] = PATH;
+    int idx = -1;
+    while (++idx < 3)
+    {
+        if (ft_strlen(format) < 4)
+            return (NULL);
+        if (!ft_strncmp(format, formats[idx], 4))
+            return callbacks[idx];
+    }
+    return NULL;
+}

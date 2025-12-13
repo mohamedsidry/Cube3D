@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:37:40 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 12:56:27 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/13 16:18:24 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void texture_info(t_texture *texture);
 //char **remove_empty_str_at_end(char **arr);
 void print_map_grid(t_grid grid);
 void config_info(t_game *ref);
+void **alloc2darr(size_t elem, size_t items, size_t itemsize);
 
 
 typedef struct s_queue
@@ -44,4 +45,7 @@ void    q_push(t_queue **queue, t_queue *newq);
 void    q_printQueue(t_queue *queue);
 void    q_pushQueue(void);
 void    q_popQueue(t_queue **queue);
+void    q_empty(t_queue **queue);
+bool is_closed_bff(t_map *map, t_queue **queue);
+
 #endif

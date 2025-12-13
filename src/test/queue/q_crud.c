@@ -25,3 +25,10 @@ void q_delete(t_queue **node)
     free(*node);
     *node = NULL;
 }
+
+void q_empty(t_queue **queue)
+{
+    t_queue out;
+    while (q_pop(queue, &out))
+        ;
+}

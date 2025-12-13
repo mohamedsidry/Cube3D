@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:54:21 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/21 09:35:49 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/13 11:21:34 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define RGBA "RGBA"
 # define PATH "PATH"
 # define HEXASET "0123456789ABCDEFabcdef"
-# define DECISET "0123456789,"
+# define DECISET "0123456789"
 # define MAPSET "01NSEW "
 # define SPACES "\t\v\b\r \n"
 #endif

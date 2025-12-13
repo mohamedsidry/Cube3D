@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:27:08 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 15:20:38 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/13 09:43:06 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int is_map_config(char *line)
     static char *identifiers[7];
     int i;
 
-    if (!line)
+    if (!line || is_space(*line))
         return (0);
     i = -1;
     identifiers[0] = NORTH;
@@ -27,8 +27,6 @@ int is_map_config(char *line)
     identifiers[4] = SKY;
     identifiers[5] = FLOOR;
     identifiers[6] = NULL;
-    while (is_space(*line))
-        line++;
     while (identifiers[++i])
     {
         if (!ft_strncmp(identifiers[i], line, ft_strlen(identifiers[i])))

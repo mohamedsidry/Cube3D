@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 13:28:29 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 12:40:17 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/13 15:12:19 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,26 @@ char **trim_tail_empty(char **arr)
         }       
     }
     return (newarr);  
+}
+
+void **alloc2darr(size_t elem, size_t items, size_t itemsize)
+{
+    void **ptr;
+    size_t idx;
+    ptr = ft_calloc(elem, sizeof(void *));
+    if (!ptr)
+        return (NULL);
+    idx = 0;
+    while (idx < elem)
+    {
+        ptr[idx] = ft_calloc(items, itemsize);
+        if (!ptr[idx])
+        {
+            while(idx >= 0)
+                nullarr2d(&ptr, idx);
+            return (NULL);
+        }
+        idx++;
+    }
+    return (ptr);
 }

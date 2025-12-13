@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 18:53:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 16:01:59 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/13 09:36:56 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void manage_line(t_scene *scene, char *rawline)
     if (map_start(rawline))
     {
         newline = ft_strtrim(rawline, "\n");
-        transform(newline, SPACES, ' ');
+        //transform(newline, SPACES, ' ');
         ft_lstadd_back(&scene->rawmap, ft_lstnew(newline));
         return;
     }

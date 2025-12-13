@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 13:32:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 11:15:25 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/13 09:23:47 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static bool validExtension(t_game *game)
         setStat(&game->error, 2);
         return (false);
     }
-    extension = ft_strchr(game->scene.path, '.');
+    extension = ft_strrchr(game->scene.path, '.');
     if (!extension || ft_strncmp(EXTENSION, extension, ft_strlen(EXTENSION)))
     {
         tmp = find_replace(ERROR_GENERAL, "$MSG", ERROR_EXTA, 0);
