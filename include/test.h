@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 11:37:40 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/13 16:18:24 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/21 17:11:17 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,26 @@ void texture_info(t_texture *texture);
 //char **remove_empty_str_at_end(char **arr);
 void print_map_grid(t_grid grid);
 void config_info(t_game *ref);
-void **alloc2darr(size_t elem, size_t items, size_t itemsize);
 
 
-typedef struct s_queue
-{
-    unsigned char content;
-    struct s_queue *next;
-    int x;
-    int y;
-} t_queue;
+// typedef struct s_queue
+// {
+//     unsigned char content;
+//     struct s_queue *next;
+//     int x;
+//     int y;
+// } t_queue;
 
-t_queue *q_create(unsigned char c, int x, int y);
-void    q_delete(t_queue **node);
-t_queue *q_find(t_queue *queue, int x, int y);
-t_queue *q_last(t_queue *queue);
-int     q_pop(t_queue **queue, t_queue *out);
-void    q_push(t_queue **queue, t_queue *newq);
+// t_queue *q_create(unsigned char c, int x, int y);
+// void    q_delete(t_queue **node);
+// t_queue *q_find(t_queue *queue, int x, int y);
+// t_queue *q_last(t_queue *queue);
+// int     q_pop(t_queue **queue, t_queue *out);
+// void    q_push(t_queue **queue, t_queue *newq);
 void    q_printQueue(t_queue *queue);
 void    q_pushQueue(void);
 void    q_popQueue(t_queue **queue);
-void    q_empty(t_queue **queue);
-bool is_closed_bff(t_map *map, t_queue **queue);
+// void    q_empty(t_queue **queue);
+// bool    is_closed_bff(t_map *map, t_queue **queue);
 
 #endif

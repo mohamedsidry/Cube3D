@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:54:25 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/13 16:34:45 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/21 17:21:58 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static bool empty_line(t_error *error, char *line);
 static bool supported_line(t_error *error,char *line);
 static bool one_direction(t_error *error, char **arr);
 static bool closed_map(t_error *error, t_map *map);
-
+static bool space_in_path(t_error *error, t_map *map);
 void map_validator(t_game *ref)
 {
     size_t  idx;
@@ -36,7 +36,7 @@ void map_validator(t_game *ref)
 
     normaize_width(&ref->map, ' ');
     closed_map(&ref->error, &ref->map);
-    //spaced_map(&ref->error, &ref->map); TODO: CHECK IF MAP HAS A SPACE WITHIN IT !
+    space_in_path(&ref->error, &ref->map);
 }
 
 
@@ -131,9 +131,34 @@ static bool closed_map(t_error *error, t_map *map)
     return (false);
 }
 
-//TODO:  CHECK IF PLAYER CAN REACH SPACE IN MAP !
 
-// static bool spaced_map(t_error *error, t_map)
-// {
+
+static bool space_in_path(t_error *error, t_map *map)
+{
+    t_queue *queue;
+    size_t x;
+    size_t y;
+    bool isfound;
     
-// }
+    queue = NULL;
+    y = -1;
+    isfound = 0;
+    while (map->map2d[++y] && !isfound)
+    {
+        x = -1;
+        while (map->map2d[y][++x])
+        {
+            if (ft_strchr("NEWS", map->map2d[y][x]))
+            {
+                q_push(&queue, q_create(map->map2d[y][x], x, y));
+                break;
+            }
+        }
+    }
+    if (is_nospace_bff(map, &queue))
+        return (true);
+    setError(error, BAD_P_MAP);
+    setStat(error, 1);
+    q_empty(&queue);
+    return (false);
+}

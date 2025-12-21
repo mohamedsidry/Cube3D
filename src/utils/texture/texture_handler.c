@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:16:19 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/13 09:52:07 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/21 16:45:14 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,26 @@ static int texture_config_handler(t_error *error, t_gametxt *txts, char *line)
 
 static void valid_textures(t_error *error, t_gametxt *textuers)
 {
-    char *unvalid;
+    char *notset;
 
-    unvalid = NULL;
-    if (!textuers->north_txt.isvalid)
-        unvalid = "NORTH";
-    else if (!textuers->south_txt.isvalid)
-        unvalid = "NORTH";
-    else if (!textuers->west_txt.isvalid)
-        unvalid = "WEST";
-    else if (!textuers->east_txt.isvalid)
-        unvalid = "EAST";
-    else if (!textuers->sky_txt.isvalid)
-        unvalid = "SKY";
-    else if (!textuers->floor_txt.isvalid)
-        unvalid = "FLOOR";
-    if (unvalid)
+    notset = NULL;
+    if (!textuers->north_txt.is_set)
+        notset = "NORTH";
+    else if (!textuers->south_txt.is_set)
+        notset = "NORTH";
+    else if (!textuers->west_txt.is_set)
+        notset = "WEST";
+    else if (!textuers->east_txt.is_set)
+        notset = "EAST";
+    else if (!textuers->sky_txt.is_set)
+        notset = "SKY";
+    else if (!textuers->floor_txt.is_set)
+        notset = "FLOOR";
+    if (notset)
     {
-        unvalid = find_replace(ERROR_TXT, "$MSG", unvalid, 0);
-        setError(error, unvalid);
+        notset = find_replace(ERROR_TXT, "$MSG", notset, 0);
+        setError(error, notset);
         setStat(error, EXIT_FAILURE);
-        nullstr(&unvalid);
+        nullstr(&notset);
     }
 }

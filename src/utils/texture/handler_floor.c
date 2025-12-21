@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:29:36 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 12:46:02 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/21 16:28:17 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,16 @@
 
 void set_floor_texture(t_error *err, t_gametxt *textures, char *line)
 {
+    static int duplicate;
+    char *msg;
+    if (duplicate)
+    {
+        msg = find_replace(ERROR_DUP, "$TXT", "floor (F) :", 0) ;
+        setError(err, msg);
+        setStat(err, EXIT_FAILURE);
+        free(msg);
+        return ;
+    }
+    duplicate = 1;
     texture_format_handler(err, &textures->floor_txt, line);
 }

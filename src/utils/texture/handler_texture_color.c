@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:41:23 by msidry            #+#    #+#             */
-/*   Updated: 2025/12/13 11:43:46 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/21 16:43:15 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void rgba_handler(t_error *error, t_texture *texture, char *rgbacolor)
     }
     texture->type = SOLID;
     texture->rgba = rgbatoint(color);
-    texture->isvalid = true;
+    texture->is_set = true;
     nullstr(&color);
 }
 
@@ -93,7 +93,7 @@ void hexa_handler(t_error *error, t_texture *texture, char *hexacolor)
         color = concat3(capitalize(hexacolor), NULL, NULL, 1);
     texture->type = SOLID;
     texture->rgba = hexatoint(color);
-    texture->isvalid = true;
+    texture->is_set = true;
     nullstr(&color);
 }
 

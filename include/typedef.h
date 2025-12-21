@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:14:02 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/19 12:06:54 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/21 16:42:52 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_texture
     t_txttype type;
     char *path;
     t_uint rgba;
-    bool isvalid;
+    bool is_set;
 } t_texture;
 
 typedef struct s_game_textures
@@ -74,4 +74,13 @@ typedef struct s_container
 typedef bool(*validCallback)(t_game *game);
 typedef void (*callconfi)(t_error *err, t_gametxt *txt, char *ln);
 typedef void (*callformat)(t_error *err, t_texture *, char *frmt);
+
+typedef struct s_queue
+{
+    unsigned char content;
+    struct s_queue *next;
+    int x;
+    int y;
+} t_queue;
+
 #endif

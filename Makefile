@@ -7,7 +7,7 @@ CFLAGS = -Wall -Werror -Wextra
 CSTAGE = -c
 CFLAGS += -pedantic -fsanitize=address -g
 
-MAIN = src/main.c
+MAIN = main.c
 INCLUDE = include/main.h
 
 DEPENDENCY_PATH = libs/libft
@@ -55,11 +55,16 @@ HELPERS =	src/utils/help/array2d.c \
 			src/utils/help/transform.c \
 			src/utils/help/ft_realloc.c \
 			src/utils/help/normalize.c \
-			src/utils/help/boundaryfloodfill.c
-
+			src/utils/help/boundaryfloodfill.c \
+			src/utils/queue/q_crud.c \
+			src/utils/queue/q_find.c  \
+			src/utils/queue/q_last.c  \
+			src/utils/queue/q_pop.c \
+			src/utils/queue/q_push.c
 
 TEST =	src/test/test.c \
-		src/test/queue/q_crud.c src/test/queue/q_find.c  src/test/queue/q_last.c  src/test/queue/q_pop.c src/test/queue/q_print.c src/test/queue/q_push.c 
+		src/test/q_print.c 
+		 
 
 OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o) $(HELPERS:.c=.o) $(TEST:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: msidry <msidry@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:13:59 by msidry            #+#    #+#             */
-/*   Updated: 2025/11/20 11:00:16 by msidry           ###   ########.fr       */
+/*   Updated: 2025/12/21 17:11:21 by msidry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,20 @@ char    **trim_tail_empty(char **arr);
 void    transform(char *str, const char *set, int c);
 void    *ft_realloc(void *ptr, size_t oldsize, size_t newsize);
 char    *normalize(char *str, size_t newsize, unsigned char toapp);
+void **alloc2darr(size_t elem, size_t items, size_t itemsize);
+
+// QUEUE
+t_queue *q_create(unsigned char c, int x, int y);
+void    q_delete(t_queue **node);
+t_queue *q_find(t_queue *queue, int x, int y);
+t_queue *q_last(t_queue *queue);
+int     q_pop(t_queue **queue, t_queue *out);
+void    q_push(t_queue **queue, t_queue *newq);
+void    q_printQueue(t_queue *queue);
+void    q_pushQueue(void);
+void    q_popQueue(t_queue **queue);
+void    q_empty(t_queue **queue);
+bool    is_closed_bff(t_map *map, t_queue **queue); 
+bool    is_nospace_bff(t_map *map, t_queue **queue);
 
 #endif
