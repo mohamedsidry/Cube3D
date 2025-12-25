@@ -38,6 +38,7 @@ bool is_closed_bff(t_map *map, t_queue **queue)
             return (false);
         }   
     }
+    nullarr2d((void***)&visited, map->hight);
     return (true);
 }
 
@@ -81,5 +82,6 @@ bool is_nospace_bff(t_map *map, t_queue **queue)
         else
             adjacent_neighbors(queue, map, out.x, out.y);
     }
+    nullarr2d((void***)&visited, map->hight);
     return (true);
 }

@@ -95,8 +95,12 @@ void **alloc2darr(size_t elem, size_t items, size_t itemsize)
         ptr[idx] = ft_calloc(items, itemsize);
         if (!ptr[idx])
         {
-            while(idx >= 0)
+            idx = 0;
+            while(idx < elem)
+            {
                 nullarr2d(&ptr, idx);
+                idx++;
+            }
             return (NULL);
         }
         idx++;

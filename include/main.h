@@ -18,7 +18,7 @@
 # include <stdbool.h>
 # include <string.h>
 # include <errno.h>
-//# include <mlx.h>
+# include "../libs/mlx/MLX42.h"
 
 // CUSTOM HEADERS
 # include "../libs/libft/libft.h"

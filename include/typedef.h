@@ -61,6 +61,24 @@ typedef struct s_map
   size_t width;
 } t_map;
 
+typedef struct s_img
+{
+    mlx_image_t *img;
+    char *address;
+    int line_len;
+    int bpp;
+    int endian;
+
+
+}t_img;
+
+typedef struct s_win
+{
+    mlx_t *mlx;
+    t_img imgl;
+    t_img imgr;
+
+}t_win;
 typedef struct s_container
 {
     int argc;
@@ -69,7 +87,10 @@ typedef struct s_container
     t_error error;
     t_map  map;
     t_gametxt textures;
+    t_win win;
+
 } t_game;
+
 
 typedef bool(*validCallback)(t_game *game);
 typedef void (*callconfi)(t_error *err, t_gametxt *txt, char *ln);

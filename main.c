@@ -19,6 +19,7 @@ int	main(int argc, char *argv[])
 
 	game = NULL;
 	game_init(&game, argc, argv);
+	mlx_loop(game->win.mlx);
 	game_destroy(&game);
 	//atexit(leakCheck);
 	return (0);

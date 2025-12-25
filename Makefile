@@ -8,16 +8,17 @@ CSTAGE = -c
 CFLAGS += -pedantic -fsanitize=address -g
 
 MAIN = main.c
-INCLUDE = include/main.h
+INCLUDE = include/main.h include/const.h include/typedef.h include/error.h
 
 DEPENDENCY_PATH = libs/libft
 DEPENDENCY = $(DEPENDENCY_PATH)/libft.a
 DEPENDENCY_NAME = ft
 DEPENDENCY_HEADER = $(DEPENDENCY_PATH)
 
-FRAMEWORKS = -framework OpenGL -framework AppKit
-MLXLIB = -lmlx $(FRAMEWORKS)
-MLXLIB =
+FRAMEWORKS = -ldl -lglfw -pthread -lm
+MLXLIB_NAME = mlx42
+MLXLIB = -l$(MLXLIB_NAME) $(FRAMEWORKS)
+MLXLIB_DIR = libs/mlx/
 
 SRCS =	src/utils/game_init.c \
 		src/utils/game_destroy.c \
@@ -63,7 +64,8 @@ HELPERS =	src/utils/help/array2d.c \
 			src/utils/queue/q_push.c
 
 TEST =	src/test/test.c \
-		src/test/q_print.c 
+		src/test/q_print.c \
+		src/test/mlx/init_mlx.c
 		 
 
 OBJS = $(MAIN:.c=.o) $(SRCS:.c=.o) $(HELPERS:.c=.o) $(TEST:.c=.o)
@@ -79,7 +81,7 @@ all : $(NAME)
 
 $(NAME): $(DEPENDENCY)  $(OBJS) 
 	@echo $(LINK) $^
-	@$(CC) $(CFLAGS) $^ -L$(DEPENDENCY_PATH) -l$(DEPENDENCY_NAME) -I$(DEPENDENCY_HEADER) $(MLXLIB)  -o $@
+	@$(CC) $(CFLAGS) $^ -L$(DEPENDENCY_PATH) -l$(DEPENDENCY_NAME) -I$(DEPENDENCY_HEADER) -L$(MLXLIB_DIR) -I$(MLXLIB_DIR) $(MLXLIB)  -o $@
 	@echo $(BULILD_MESSAGE)
 
 $(DEPENDENCY):

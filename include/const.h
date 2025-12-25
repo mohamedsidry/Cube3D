@@ -30,4 +30,7 @@
 # define DECISET "0123456789"
 # define MAPSET "01NSEW "
 # define SPACES "\t\v\b\r \n"
+# define WIN_WIDTH 1920
+# define WIN_HIGHT 1080
+# define WIN_TITLE "Cube 3D" 
 #endif

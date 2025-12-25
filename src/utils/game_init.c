@@ -26,6 +26,7 @@ void game_init(t_game**ref, int argc, char *argv[])
     config_handler(*ref);
     //config_info(*ref);
     mostBeGood(ref);
+    init_mlx(*ref);
 }
 
 static void init_default(t_game *ref, int argc, char *argv[])

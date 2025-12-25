@@ -26,6 +26,8 @@ void texture_info(t_texture *texture);
 void print_map_grid(t_grid grid);
 void config_info(t_game *ref);
 
+void init_mlx(t_game *ref);
+
 
 // typedef struct s_queue
 // {
